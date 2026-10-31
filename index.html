@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Планетарий «Орион» — вселенная начинается здесь</title>
+<meta name="description" content="Планетарий и обсерватория «Орион» в Санкт-Петербурге: шесть полнокупольных программ, живые лекции астрономов и вечерние наблюдения в телескоп. Билеты от 400 ₽.">
+<link rel="canonical" href="https://orion-planetarium.ru/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:site_name" content="Планетарий «Орион»">
+<meta property="og:title" content="Планетарий «Орион» — вселенная начинается здесь">
+<meta property="og:description" content="Шесть полнокупольных программ, лекции астрономов и наблюдения в телескоп. Санкт-Петербург, ул. Профессора Попова, 5.">
+<meta property="og:image" content="https://orion-planetarium.ru/assets/hero.jpg">
+<meta property="og:url" content="https://orion-planetarium.ru/">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Планетарий «Орион»",
+  "description": "Планетарий и обсерватория в Санкт-Петербурге",
+  "image": "https://orion-planetarium.ru/assets/hero.jpg",
+  "telephone": "+7-812-555-04-12",
+  "email": "hello@orion-planetarium.ru",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "ул. Профессора Попова, 5, корп. 3",
+    "addressLocality": "Санкт-Петербург",
+    "addressCountry": "RU"
+  },
+  "openingHours": "Mo-Su 10:30-21:30",
+  "priceRange": "400-1600 RUB"
+}
+</script>
+<style>
+  :root{
+    --bg:#07070F;
+    --bg-2:#0C0C18;
+    --surface:rgba(255,255,255,.045);
+    --surface-2:rgba(255,255,255,.075);
+    --line:rgba(255,255,255,.11);
+    --text:#F3F2F8;
+    --muted:#A5A2B8;
+    --gold:#F4C97A;
+    --gold-deep:#D9A94E;
+    --violet:#9B8CFF;
+    --radius:18px;
+    --max:1180px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:"Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;
+    font-size:16px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  button{font:inherit;cursor:pointer}
+  .wrap{width:100%;max-width:var(--max);margin:0 auto;padding:0 24px}
+  .display{font-family:Georgia,"Times New Roman",serif;font-weight:400;letter-spacing:-.02em;line-height:1.05}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:10px;
+    font-size:12px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--gold);font-weight:600;
+  }
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--gold);opacity:.8}
+  .section{padding:110px 0;position:relative}
+  .section-head{max-width:640px;margin-bottom:54px}
+  .section-head h2{font-size:clamp(30px,4vw,50px);margin:16px 0 14px}
+  .section-head p{color:var(--muted);font-size:17px}
+
+  /* ---------- HEADER ---------- */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    background:rgba(7,7,15,.72);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    border-bottom:1px solid transparent;
+    transition:background .3s,border-color .3s;
+  }
+  header.scrolled{background:rgba(7,7,15,.94);border-bottom-color:var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:78px;gap:28px}
+  .logo{display:flex;align-items:center;gap:11px;font-weight:600;letter-spacing:.02em}
+  .logo .mark{
+    width:34px;height:34px;border-radius:50%;
+    border:1px solid var(--gold);
+    display:grid;place-items:center;position:relative;
+  }
+  .logo .mark::after{content:"";width:9px;height:9px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px var(--gold)}
+  .logo .mark::before{content:"";position:absolute;inset:-6px;border-radius:50%;border:1px solid rgba(244,201,122,.28);transform:rotate(-24deg) scaleY(.42)}
+  .logo b{font-size:17px;letter-spacing:.14em;text-transform:uppercase}
+  nav ul{display:flex;gap:30px;list-style:none;font-size:14.5px;color:#D6D3E4}
+  nav a{position:relative;padding:6px 0;transition:color .2s}
+  nav a::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--gold);transition:width .25s}
+  nav a:hover{color:var(--gold)}
+  nav a:hover::after{width:100%}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:9px;
+    padding:14px 24px;border-radius:999px;border:1px solid transparent;
+    font-size:14.5px;font-weight:600;letter-spacing:.01em;
+    transition:transform .2s,background .2s,border-color .2s,color .2s;
+    white-space:nowrap;
+  }
+  .btn-gold{background:linear-gradient(180deg,var(--gold),var(--gold-deep));color:#1A1408;box-shadow:0 8px 26px rgba(244,201,122,.18)}
+  .btn-gold:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(244,201,122,.3)}
+  .btn-ghost{border-color:var(--line);color:var(--text);background:rgba(255,255,255,.03)}
+  .btn-ghost:hover{border-color:rgba(244,201,122,.6);color:var(--gold)}
+  .burger{display:none;background:none;border:1px solid var(--line);border-radius:10px;padding:9px 11px;color:var(--text)}
+  .burger span{display:block;width:20px;height:2px;background:currentColor;margin:4px 0;transition:.25s}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;min-height:100vh;display:flex;align-items:center;
+    padding:130px 0 80px;overflow:hidden;
+  }
+  .hero-bg{position:absolute;inset:0;z-index:0}
+  .hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 40%;opacity:.62}
+  .hero-bg::after{
+    content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(900px 520px at 18% 42%,rgba(7,7,15,.55),transparent 70%),
+      linear-gradient(180deg,rgba(7,7,15,.86) 0%,rgba(7,7,15,.42) 42%,rgba(7,7,15,.96) 100%);
+  }
+  .hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.25fr .75fr;gap:56px;align-items:end}
+  .hero h1{font-size:clamp(44px,6.6vw,86px);letter-spacing:-.035em}
+  .hero h1 em{font-style:italic;color:var(--gold)}
+  .hero p.lead{margin:24px 0 34px;max-width:520px;color:#CFCBDF;font-size:18px}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .hero-note{font-size:13px;color:var(--muted);margin-top:18px;display:flex;gap:8px;align-items:center}
+  .hero-note i{width:6px;height:6px;border-radius:50%;background:#59D68E;box-shadow:0 0 8px #59D68E;display:inline-block}
+  .next-card{
+    background:linear-gradient(160deg,rgba(255,255,255,.10),rgba(255,255,255,.03));
+    border:1px solid var(--line);border-radius:var(--radius);
+    padding:22px;backdrop-filter:blur(12px);
+    align-self:end;margin-bottom:6px;
+  }
+  .next-card .tag{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+  .next-card h3{font-family:Georgia,serif;font-size:22px;margin:8px 0 4px}
+  .next-card .meta{display:flex;justify-content:space-between;color:var(--muted);font-size:13.5px;border-top:1px solid var(--line);margin-top:16px;padding-top:14px}
+  .next-card .meta b{color:var(--text);font-weight:600}
+  .scroll-hint{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);z-index:2}
+  .scroll-hint::after{content:"";display:block;width:1px;height:34px;margin:10px auto 0;background:linear-gradient(var(--gold),transparent)}
+  a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{
+    outline:2px solid var(--gold);outline-offset:3px;border-radius:4px;
+  }
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.22,1,.36,1)}
+  .reveal.is-visible{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;scroll-behavior:auto !important}
+    .reveal{opacity:1;transform:none}
+  }
+
+  /* ---------- TICKER ---------- */
+  .ticker{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg-2);overflow:hidden;padding:16px 0}
+  .ticker-track{display:flex;gap:46px;width:max-content;animation:slide 34s linear infinite}
+  .ticker span{font-size:12.5px;letter-spacing:.24em;text-transform:uppercase;color:#8F8BA6;white-space:nowrap}
+  .ticker span b{color:var(--gold);font-weight:500}
+  @keyframes slide{to{transform:translateX(-50%)}}
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:64px;align-items:center}
+  .about-media{position:relative}
+  .about-media img{border-radius:var(--radius);width:100%;height:520px;object-fit:cover;filter:saturate(.92)}
+  .about-media .badge{
+    position:absolute;right:-18px;bottom:34px;background:var(--gold);color:#191307;
+    padding:18px 22px;border-radius:14px;text-align:center;box-shadow:0 18px 40px rgba(0,0,0,.45);
+  }
+  .about-media .badge b{display:block;font-family:Georgia,serif;font-size:30px;line-height:1}
+  .about-media .badge span{font-size:11px;letter-spacing:.16em;text-transform:uppercase}
+  .about-body h2{font-size:clamp(28px,3.4vw,44px);margin:14px 0 18px}
+  .about-body p{color:var(--muted);margin-bottom:14px}
+  .features{list-style:none;margin-top:28px;display:grid;gap:2px}
+  .features li{display:flex;gap:16px;align-items:flex-start;padding:18px 0;border-top:1px solid var(--line)}
+  .features li:last-child{border-bottom:1px solid var(--line)}
+  .features .num{font-family:Georgia,serif;color:var(--gold);font-size:15px;min-width:28px;padding-top:2px}
+  .features b{display:block;font-size:15.5px;margin-bottom:2px}
+  .features span{color:var(--muted);font-size:14.5px}
+
+  /* ---------- PROGRAMS ---------- */
+  #programs{background:linear-gradient(180deg,var(--bg) 0%,#0A0A16 50%,var(--bg) 100%)}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .card{
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+    overflow:hidden;display:flex;flex-direction:column;
+    transition:transform .3s,border-color .3s,background .3s;
+  }
+  .card:hover{transform:translateY(-6px);border-color:rgba(244,201,122,.45);background:var(--surface-2)}
+  .card .thumb{position:relative;height:206px;overflow:hidden;background:#111}
+  .card .thumb img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease}
+  .card:hover .thumb img{transform:scale(1.06)}
+  .card .age{
+    position:absolute;top:14px;right:14px;background:rgba(7,7,15,.72);
+    border:1px solid var(--line);padding:4px 11px;border-radius:999px;font-size:11.5px;letter-spacing:.08em;
+  }
+  .card .body{padding:22px 22px 24px;display:flex;flex-direction:column;flex:1}
+  .card h3{font-family:Georgia,serif;font-size:22px;margin-bottom:8px}
+  .card p{color:var(--muted);font-size:14.5px;flex:1}
+  .card .foot{display:flex;align-items:center;justify-content:space-between;margin-top:20px;padding-top:16px;border-top:1px solid var(--line)}
+  .card .price{font-size:19px;font-weight:600}
+  .card .price small{display:block;font-size:11px;color:var(--muted);font-weight:400;letter-spacing:.1em;text-transform:uppercase}
+  .card .time{font-size:13px;color:var(--muted)}
+
+  /* ---------- SCHEDULE / TICKETS ---------- */
+  .tickets-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:start}
+  .plans{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .plan{border:1px solid var(--line);border-radius:16px;padding:24px;background:var(--surface);transition:.25s}
+  .plan:hover{border-color:rgba(244,201,122,.4)}
+  .plan.featured{background:linear-gradient(155deg,rgba(244,201,122,.16),rgba(244,201,122,.03));border-color:rgba(244,201,122,.5)}
+  .plan .name{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+  .plan .amount{font-family:Georgia,serif;font-size:38px;margin:10px 0 2px}
+  .plan .amount small{font-size:16px;color:var(--muted);font-family:"Segoe UI",sans-serif}
+  .plan .cond{font-size:13px;color:var(--muted)}
+  .plan .flag{display:inline-block;margin-top:12px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+  .schedule{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:28px}
+  .schedule h3{font-family:Georgia,serif;font-size:22px;margin-bottom:6px}
+  .schedule .hint{font-size:13px;color:var(--muted);margin-bottom:18px}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  th,td{text-align:left;padding:12px 0;border-bottom:1px solid var(--line)}
+  th{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  td b{font-weight:600;color:var(--gold)}
+  .schedule .note{display:flex;gap:10px;margin-top:18px;font-size:13px;color:var(--muted);line-height:1.5}
+  .schedule .note i{color:var(--gold);font-style:normal}
+  .cta-row{display:flex;gap:12px;margin-top:22px;flex-wrap:wrap}
+  .cta-row .btn{flex:1}
+
+  /* ---------- REVIEWS ---------- */
+  .reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .review{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:26px;display:flex;flex-direction:column;gap:16px}
+  .review .stars{color:var(--gold);letter-spacing:3px;font-size:14px}
+  .review blockquote{font-size:15px;color:#E4E1EE;flex:1}
+  .review .who{display:flex;align-items:center;gap:12px;border-top:1px solid var(--line);padding-top:16px}
+  .avatar{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-size:14px;font-weight:600;background:linear-gradient(140deg,#3B3670,#1E1B3A);color:#E7E3FF;border:1px solid rgba(155,140,255,.35)}
+  .review .who b{display:block;font-size:14.5px}
+  .review .who span{font-size:12.5px;color:var(--muted)}
+
+  /* ---------- FAQ ---------- */
+  .faq{max-width:820px;margin:0 auto}
+  details{border-bottom:1px solid var(--line);padding:22px 0}
+  details summary{
+    list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;
+    font-size:17.5px;font-weight:500;
+  }
+  details summary::-webkit-details-marker{display:none}
+  details summary::after{content:"+";color:var(--gold);font-size:22px;line-height:1;transition:transform .25s}
+  details[open] summary::after{content:"–"}
+  details p{color:var(--muted);margin-top:12px;max-width:660px}
+
+  /* ---------- CONTACTS ---------- */
+  #contacts{background:linear-gradient(180deg,var(--bg),#0A0A16)}
+  .contacts-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:start}
+  .contact-list{list-style:none;margin-top:26px;display:grid;gap:22px}
+  .contact-list li{display:grid;grid-template-columns:26px 1fr;gap:14px}
+  .contact-list .ico{color:var(--gold);font-size:16px;line-height:1.4}
+  .contact-list b{display:block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:2px}
+  .contact-list a{border-bottom:1px solid rgba(244,201,122,.4)}
+  .map{margin-top:26px;height:210px;border-radius:14px;border:1px solid var(--line);position:relative;overflow:hidden;background:
+      linear-gradient(rgba(155,140,255,.06) 1px,transparent 1px) 0 0/100% 34px,
+      linear-gradient(90deg,rgba(155,140,255,.06) 1px,transparent 1px) 0 0/34px 100%,
+      radial-gradient(400px 200px at 60% 40%,#12122A,#0A0A16)}
+  .map .road{position:absolute;left:-10%;top:52%;width:120%;height:26px;background:rgba(255,255,255,.05);transform:rotate(-7deg)}
+  .map .road.v{left:44%;top:-10%;width:22px;height:130%;transform:rotate(4deg)}
+  .map .pin{position:absolute;left:52%;top:40%;width:16px;height:16px;border-radius:50% 50% 50% 0;background:var(--gold);transform:rotate(-45deg);box-shadow:0 0 0 8px rgba(244,201,122,.12)}
+  .map .label{position:absolute;left:56%;top:46%;font-size:12px;color:#D9D5E8;background:rgba(7,7,15,.8);padding:4px 9px;border-radius:6px;border:1px solid var(--line)}
+  form{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:30px}
+  form h3{font-family:Georgia,serif;font-size:24px;margin-bottom:6px}
+  form p.sub{color:var(--muted);font-size:14px;margin-bottom:22px}
+  .field{margin-bottom:16px}
+  .field label{display:block;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
+  .field input,.field select,.field textarea{
+    width:100%;background:rgba(255,255,255,.05);border:1px solid var(--line);
+    border-radius:10px;padding:12px 14px;color:var(--text);font:inherit;font-size:14.5px;
+    transition:border-color .2s,background .2s;
+  }
+  .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--gold);background:rgba(244,201,122,.06)}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  form .btn{width:100%;margin-top:6px}
+  form .privacy{font-size:12px;color:var(--muted);margin-top:12px;text-align:center}
+
+  /* ---------- FOOTER ---------- */
+  footer{border-top:1px solid var(--line);padding:64px 0 28px;background:#05050B}
+  .foot-grid{display:grid;grid-template-columns:1.4fr .8fr .8fr .9fr;gap:40px}
+  footer .logo{margin-bottom:14px}
+  footer p{color:var(--muted);font-size:14px;max-width:280px}
+  footer h4{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+  footer ul{list-style:none;display:grid;gap:9px;font-size:14px}
+  footer ul a{color:#CFCBDF;transition:color .2s}
+  footer ul a:hover{color:var(--gold)}
+  .foot-bottom{display:flex;justify-content:space-between;gap:20px;border-top:1px solid var(--line);margin-top:48px;padding-top:22px;font-size:12.5px;color:var(--muted);flex-wrap:wrap}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:1024px){
+    .hero .wrap{grid-template-columns:1fr;gap:34px}
+    .next-card{max-width:420px}
+    .about-grid,.tickets-grid,.contacts-grid{grid-template-columns:1fr;gap:36px}
+    .about-media img{height:400px}
+    .cards,.reviews{grid-template-columns:1fr 1fr}
+    .foot-grid{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:760px){
+    .section{padding:72px 0}
+    nav{position:absolute;top:78px;left:0;right:0;background:#08080F;border-bottom:1px solid var(--line);display:none}
+    nav.open{display:block}
+    nav ul{flex-direction:column;gap:0;padding:10px 24px 18px}
+    nav li{border-bottom:1px solid var(--line)}
+    nav a{display:block;padding:14px 0}
+    .burger{display:block}
+    .nav > .btn{display:none}
+    .hero{padding-top:110px;min-height:auto}
+    .hero h1{font-size:44px}
+    .cards,.reviews,.plans,.row2{grid-template-columns:1fr}
+    .about-media .badge{right:14px}
+    .foot-grid{grid-template-columns:1fr}
+    .scroll-hint{display:none}
+  }
+</style>
+</head>
+<body>
+
+<header id="header">
+  <div class="wrap nav">
+    <a href="#" class="logo"><span class="mark"></span><b>Орион</b></a>
+    <nav id="nav" aria-label="Основная навигация">
+      <ul>
+        <li><a href="#about">О нас</a></li>
+        <li><a href="#programs">Программы</a></li>
+        <li><a href="#schedule">Расписание</a></li>
+        <li><a href="#reviews">Отзывы</a></li>
+        <li><a href="#contacts">Контакты</a></li>
+      </ul>
+    </nav>
+    <a href="#schedule" class="btn btn-gold">Купить билет</a>
+    <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="hero-bg">
+    <img src="assets/hero.jpg" alt="Туманность Вестерлунд 2">
+  </div>
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Планетарий и обсерватория · Санкт-Петербург</span>
+      <h1 class="display">Вселенная<br>начинается <em>здесь</em></h1>
+      <p class="lead">Полнокупольные фильмы, живые лекции астрономов и вечерние наблюдения в телескоп — в десяти минутах от метро «Петроградская».</p>
+      <div class="hero-actions">
+        <a href="#programs" class="btn btn-gold">Выбрать программу</a>
+        <a href="#schedule" class="btn btn-ghost">Смотреть расписание</a>
+      </div>
+      <div class="hero-note"><i></i> Ближайший сеанс сегодня в 19:00 — осталось 14 мест</div>
+    </div>
+    <aside class="next-card">
+      <span class="tag">Сеанс дня</span>
+      <h3>Чёрные дыры</h3>
+      <p style="color:var(--muted);font-size:14px">50 минут · 12+ · лекция + полнокупольный фильм</p>
+      <div class="meta"><span>Сегодня</span><b>19:00</b></div>
+      <div class="meta" style="border-top:none;padding-top:6px"><span>Билет</span><b>750 ₽</b></div>
+    </aside>
+  </div>
+  <div class="scroll-hint">Листайте</div>
+</section>
+
+<div class="ticker">
+  <div class="ticker-track">
+    <span><b>12 000</b> звёзд на куполе</span>
+    <span>Купол <b>12 метров</b></span>
+    <span><b>3</b> телескопа</span>
+    <span>Лекции <b>астрономов</b></span>
+    <span><b>18</b> лет наблюдений</span>
+    <span><b>12 000</b> звёзд на куполе</span>
+    <span>Купол <b>12 метров</b></span>
+    <span><b>3</b> телескопа</span>
+    <span>Лекции <b>астрономов</b></span>
+    <span><b>18</b> лет наблюдений</span>
+  </div>
+</div>
+
+<section class="section reveal" id="about">
+  <div class="wrap about-grid">
+    <div class="about-media">
+      <img src="assets/dome.jpg" alt="Зал планетария с куполом">
+      <div class="badge"><b>2008</b><span>год открытия</span></div>
+    </div>
+    <div class="about-body">
+      <span class="eyebrow">О планетарии</span>
+      <h2 class="display">Мы показываем космос так, чтобы его захотелось изучать</h2>
+      <p>«Орион» открылся в 2008 году как небольшая обсерватория при университете. Сегодня это планетарий с двенадцатиметровым куполом, лекторий и две обсерватории на крыше.</p>
+      <p>Наши лекторы — астрономы, физики и выпускники профильных факультетов. Мы рассказываем о чёрных дырах и экзопланетах без формул, но и без упрощений: на любой вопрос найдётся честный ответ.</p>
+      <ul class="features">
+        <li><span class="num">01</span><div><b>Живая лекция, а не аудиогид</b><span>Каждый сеанс ведёт астроном — можно спрашивать и спорить.</span></div></li>
+        <li><span class="num">02</span><div><b>Наблюдения после сеанса</b><span>При ясной погоде поднимаемся на крышу к телескопам.</span></div></li>
+        <li><span class="num">03</span><div><b>Проектор 8K и звук 5.1</b><span>Купол 12 метров — самый большой в городе.</span></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section reveal" id="programs">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Программы</span>
+      <h2 class="display">Шесть способов посмотреть на небо</h2>
+      <p>Каждая программа — это лекция астронома и полнокупольный фильм. Продолжительность указана вместе с ответами на вопросы.</p>
+    </div>
+    <div class="cards">
+      <article class="card">
+        <div class="thumb"><img src="assets/prog-saturn.jpg" alt="Сатурн и его кольца, снимок аппарата Cassini"><span class="age">6+</span></div>
+        <div class="body">
+          <h3>Солнечная система</h3>
+          <p>Пролетаем над кольцами Сатурна, спускаемся в атмосферу Юпитера и разбираемся, почему Земля — редкая удача.</p>
+          <div class="foot"><div class="price">650 ₽<small>45 минут</small></div><span class="time">Пн–Вс</span></div>
+        </div>
+      </article>
+      <article class="card">
+        <div class="thumb"><img src="assets/prog-blackhole.jpg" alt="Тень чёрной дыры в центре галактики M87"><span class="age">12+</span></div>
+        <div class="body">
+          <h3>Чёрные дыры</h3>
+          <p>Что происходит за горизонтом событий и почему первое фото M87 изменило астрофизику.</p>
+          <div class="foot"><div class="price">750 ₽<small>50 минут</small></div><span class="time">Чт, Сб</span></div>
+        </div>
+      </article>
+      <article class="card">
+        <div class="thumb"><img src="assets/prog-stars.jpg" alt="Столпы Созидания в туманности Киля"><span class="age">6+</span></div>
+        <div class="body">
+          <h3>Рождение звёзд</h3>
+          <p>Столпы Созидания и звёздные ясли: как из холодного газа рождается свет.</p>
+          <div class="foot"><div class="price">650 ₽<small>40 минут</small></div><span class="time">Ср, Вс</span></div>
+        </div>
+      </article>
+      <article class="card">
+        <div class="thumb"><img src="assets/prog-moon.jpg" alt="Полная Луна, снимок с высоким разрешением"><span class="age">6+</span></div>
+        <div class="body">
+          <h3>Луна: обратная сторона</h3>
+          <p>22 июля 1969 года и то, что мы узнали о Луне за следующие пятьдесят лет.</p>
+          <div class="foot"><div class="price">600 ₽<small>45 минут</small></div><span class="time">Пн, Пт</span></div>
+        </div>
+      </article>
+      <article class="card">
+        <div class="thumb"><img src="assets/prog-mars.jpg" alt="Марс в естественных цветах, снимок аппарата OSIRIS"><span class="age">12+</span></div>
+        <div class="body">
+          <h3>Марс: дорога домой</h3>
+          <p>Роверы, пылевые бури и главный вопрос: сможет ли человек жить на Марсе.</p>
+          <div class="foot"><div class="price">750 ₽<small>50 минут</small></div><span class="time">Вт, Сб</span></div>
+        </div>
+      </article>
+      <article class="card">
+        <div class="thumb"><img src="assets/prog-aurora.jpg" alt="Северное сияние над побережьем"><span class="age">0+</span></div>
+        <div class="body">
+          <h3>Северное сияние</h3>
+          <p>Путешествие к полярному кругу: физика авроры и лучшие места для наблюдения.</p>
+          <div class="foot"><div class="price">550 ₽<small>35 минут</small></div><span class="time">Ежедневно</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section reveal" id="schedule">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Билеты и расписание</span>
+      <h2 class="display">Выберите сеанс</h2>
+      <p>Билет действует на конкретную программу. Студенческий тариф — при предъявлении студенческого билета.</p>
+    </div>
+    <div class="tickets-grid">
+      <div>
+        <div class="plans">
+          <div class="plan">
+            <div class="name">Взрослый</div>
+            <div class="amount">650 <small>₽</small></div>
+            <div class="cond">Любая программа, кроме 12+</div>
+          </div>
+          <div class="plan featured">
+            <div class="name">Студенческий</div>
+            <div class="amount">450 <small>₽</small></div>
+            <div class="cond">Очно, при предъявлении билета</div>
+            <span class="flag">Выбор студентов</span>
+          </div>
+          <div class="plan">
+            <div class="name">Детский</div>
+            <div class="amount">400 <small>₽</small></div>
+            <div class="cond">До 12 лет включительно</div>
+          </div>
+          <div class="plan">
+            <div class="name">Семейный</div>
+            <div class="amount">1 600 <small>₽</small></div>
+            <div class="cond">2 взрослых + 2 детей</div>
+          </div>
+        </div>
+        <div class="cta-row">
+          <a href="#contacts" class="btn btn-gold">Купить билет</a>
+        </div>
+        <p style="font-size:13px;color:var(--muted);margin-top:14px">Оплата картой на входе или онлайн. Возврат — не позднее чем за 24 часа до сеанса.</p>
+      </div>
+      <div class="schedule">
+        <h3>Расписание сеансов</h3>
+        <p class="hint">Одинаково для всех программ, кроме вечерних наблюдений</p>
+        <table>
+          <thead><tr><th>Дни</th><th>Сеансы</th></tr></thead>
+          <tbody>
+            <tr><td>Пн — Чт</td><td><b>11:00</b> · 13:30 · 16:00 · <b>19:00</b></td></tr>
+            <tr><td>Пт — Сб</td><td><b>11:00</b> · 13:30 · 16:00 · 19:00 · <b>21:30</b></td></tr>
+            <tr><td>Вс</td><td><b>11:00</b> · 13:30 · 16:00</td></tr>
+          </tbody>
+        </table>
+        <div class="note"><i>✳</i><span>Сеанс 21:30 — наблюдение в телескоп на крыше. Проводится только при ясной погоде; при облачности переносим или возвращаем стоимость.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section reveal" id="reviews">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Отзывы</span>
+      <h2 class="display">Что говорят гости</h2>
+    </div>
+    <div class="reviews">
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <blockquote>Ходили с детьми на «Солнечную систему» — сын потом неделю рисовал Сатурн. Лектор отвечал на все вопросы, даже самые странные.</blockquote>
+        <div class="who"><div class="avatar">АК</div><div><b>Анна К.</b><span>семейный билет, октябрь 2026</span></div></div>
+      </div>
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <blockquote>Были на вечернем наблюдении: видели кольца Сатурна и двойную звезду. Купол впечатляет, а звук — отдельный вид искусства.</blockquote>
+        <div class="who"><div class="avatar">ДП</div><div><b>Дмитрий П.</b><span>сеанс 21:30, сентябрь 2026</span></div></div>
+      </div>
+      <div class="review">
+        <div class="stars">★★★★☆</div>
+        <blockquote>Студенческий билет сработал, взяла ещё и на «Чёрные дыры». Объясняют физику понятно, без формул. Вернусь на лекцию об экзопланетах.</blockquote>
+        <div class="who"><div class="avatar">МС</div><div><b>Мария С.</b><span>студенческий билет, сентябрь 2026</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section reveal" id="faq">
+  <div class="wrap">
+    <div class="section-head" style="margin-left:auto;margin-right:auto;text-align:center">
+      <span class="eyebrow">Вопросы</span>
+      <h2 class="display">Коротко о важном</h2>
+    </div>
+    <div class="faq">
+      <details open>
+        <summary>Нужно ли покупать билет заранее?</summary>
+        <p>На вечерние сеансы и выходные — да: места обычно заканчиваются за два-три дня. В будни днём можно прийти без брони.</p>
+      </details>
+      <details>
+        <summary>Можно ли прийти с ребёнком трёх лет?</summary>
+        <p>Да, программы 0+ и 6+ адаптированы для детей. Учтите, что в зале темно, а звук в куполе громче обычного.</p>
+      </details>
+      <details>
+        <summary>Что будет, если погода облачная?</summary>
+        <p>Наблюдения в телескоп мы переносим на другой день или возвращаем стоимость той части билета, которая относится к наблюдению.</p>
+      </details>
+      <details>
+        <summary>Есть ли парковка?</summary>
+        <p>Да, бесплатная парковка на 40 мест, въезд с улицы Профессора Попова. В вечерние часы места обычно есть.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="section reveal" id="contacts">
+  <div class="wrap contacts-grid">
+    <div>
+      <span class="eyebrow">Контакты</span>
+      <h2 class="display" style="font-size:clamp(28px,3.4vw,44px);margin:14px 0 10px">Приходите смотреть на звёзды</h2>
+      <p style="color:var(--muted)">Мы работаем каждый день, кроме последнего вторника месяца — в этот день обслуживаем оборудование.</p>
+      <ul class="contact-list">
+        <li><span class="ico">◎</span><div><b>Адрес</b>Санкт-Петербург, ул. Профессора Попова, 5, корп. 3<br><span style="color:var(--muted);font-size:14px">м. «Петроградская», 7 минут пешком</span></div></li>
+        <li><span class="ico">◷</span><div><b>Часы работы</b>Ежедневно 10:30 — 21:30</div></li>
+        <li><span class="ico">✆</span><div><b>Телефон</b><a href="tel:+78125550412">+7 (812) 555-04-12</a></div></li>
+        <li><span class="ico">✉</span><div><b>Почта</b><a href="mailto:hello@orion-planetarium.ru">hello@orion-planetarium.ru</a></div></li>
+      </ul>
+      <div class="map">
+        <div class="road"></div><div class="road v"></div>
+        <div class="pin"></div><div class="label">Орион · корп. 3</div>
+      </div>
+    </div>
+    <form action="#" method="post">
+      <h3>Забронировать сеанс</h3>
+      <p class="sub">Оставьте контакты — подтвердим бронь в течение 15 минут.</p>
+      <div class="row2">
+        <div class="field"><label for="name">Имя</label><input id="name" type="text" placeholder="Как к вам обращаться" required></div>
+        <div class="field"><label for="phone">Телефон</label><input id="phone" type="tel" placeholder="+7 (___) ___-__-__" required></div>
+      </div>
+      <div class="field"><label for="prog">Программа</label>
+        <select id="prog">
+          <option>Солнечная система — 650 ₽</option>
+          <option>Чёрные дыры — 750 ₽</option>
+          <option>Рождение звёзд — 650 ₽</option>
+          <option>Луна: обратная сторона — 600 ₽</option>
+          <option>Марс: дорога домой — 750 ₽</option>
+          <option>Северное сияние — 550 ₽</option>
+        </select>
+      </div>
+      <div class="row2">
+        <div class="field"><label for="date">Дата</label><input id="date" type="date"></div>
+        <div class="field"><label for="count">Билетов</label><input id="count" type="number" min="1" max="10" value="2"></div>
+      </div>
+      <button class="btn btn-gold" type="submit">Забронировать</button>
+      <p class="privacy">Нажимая кнопку, вы соглашаетесь с политикой обработки персональных данных.</p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a href="#" class="logo"><span class="mark"></span><b>Орион</b></a>
+        <p>Планетарий и обсерватория в Санкт-Петербурге. Купол 12 метров, живые лекции и наблюдения в телескоп.</p>
+      </div>
+      <div>
+        <h4>Разделы</h4>
+        <ul>
+          <li><a href="#about">О нас</a></li>
+          <li><a href="#programs">Программы</a></li>
+          <li><a href="#schedule">Расписание</a></li>
+          <li><a href="#reviews">Отзывы</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Гостям</h4>
+        <ul>
+          <li><a href="#schedule">Билеты</a></li>
+          <li><a href="#faq">Вопросы</a></li>
+          <li><a href="#contacts">Как добраться</a></li>
+          <li><a href="#contacts">Группам</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Связь</h4>
+        <ul>
+          <li><a href="tel:+78125550412">+7 (812) 555-04-12</a></li>
+          <li><a href="mailto:hello@orion-planetarium.ru">hello@orion-planetarium.ru</a></li>
+          <li>ул. Профессора Попова, 5</li>
+          <li>Ежедневно 10:30 — 21:30</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2008—2026 Планетарий «Орион». Все права защищены.</span>
+      <span>Изображения: NASA, ESA, Wikimedia Commons</span>
+    </div>
+  </div>
+</main>
+
+</footer>
+
+<script>
+  const header = document.getElementById('header');
+  const nav = document.getElementById('nav');
+  const burger = document.getElementById('burger');
+  burger.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    burger.setAttribute('aria-expanded', String(open));
+    burger.setAttribute('aria-label', open ? 'Закрыть меню' : 'Открыть меню');
+  });
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 20);
+  });
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    nav.classList.remove('open');
+    burger.setAttribute('aria-expanded', 'false');
+  }));
+
+  // Плавное появление секций при прокрутке
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const blocks = document.querySelectorAll('.reveal');
+  if (reduced || !('IntersectionObserver' in window)) {
+    blocks.forEach(el => el.classList.add('is-visible'));
+  } else {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+    blocks.forEach(el => io.observe(el));
+  }
+</script>
+</body>
+</html>
