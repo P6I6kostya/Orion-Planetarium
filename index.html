@@ -88,11 +88,11 @@
   .skip-link:focus-visible{transform:none}
   .display{font-family:Georgia,"Times New Roman",serif;font-weight:400;letter-spacing:-.02em;line-height:1.05}
   .eyebrow{
-    display:inline-flex;align-items:center;gap:10px;
+    display:block;text-align:center;margin:0 auto;gap:10px;
     font-size:12px;letter-spacing:.22em;text-transform:uppercase;
     color:var(--gold-text);font-weight:600;
   }
-  .eyebrow::before{content:"";width:26px;height:1px;background:var(--gold);opacity:.8}
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--gold);opacity:.8;display:inline-block;margin-right:10px}
   .section{padding:110px 0;position:relative}
   .section-head{max-width:640px;margin-bottom:54px}
   .section-head h2{font-size:clamp(30px,4vw,50px);margin:16px 0 14px}
